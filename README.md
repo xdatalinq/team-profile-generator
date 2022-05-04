@@ -27,9 +27,9 @@ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am
 WHEN I decide to finish building my team<br>
 THEN I exit the application, and the HTML is generated<br>
 
-The application must have these classes: Employee, Manager, Engineer, and Intern. The tests for these classes (in the _tests_ directory) must all pass.
+#The application must have these classes: Employee, Manager, Engineer, and Intern. The tests for these classes (in the _tests_ directory) must all pass.
 <br>
-The first class is an Employee parent class with the following properties and methods:
+#The first class is an Employee parent class with the following properties and methods:
 <br>
     name
 <br>
@@ -45,15 +45,15 @@ The first class is an Employee parent class with the following properties and me
 <br>
     getRole() // Returns 'Employee'
 <br>
-The other three classes will extend Employee.
+#The other three classes will extend Employee.
 <br>
-In addition to Employee's properties and methods, Manager will also have:
+#In addition to Employee's properties and methods, Manager will also have:
 <br>
     officeNumber
 <br>
     getRole() // Overridden to return 'Manager'
 <br>
-In addition to Employee's properties and methods, Engineer will also have:
+#In addition to Employee's properties and methods, Engineer will also have:
 <br>
     github // GitHub username
 <br>
@@ -61,7 +61,7 @@ In addition to Employee's properties and methods, Engineer will also have:
 <br>
     getRole() // Overridden to return 'Engineer'
 <br>
-In addition to Employee's properties and methods, Intern will also have:
+#In addition to Employee's properties and methods, Intern will also have:
 <br>
     school
 <br>
@@ -69,4 +69,4 @@ In addition to Employee's properties and methods, Intern will also have:
 <br>
     getRole() // Overridden to return 'Intern'
 <br>
-Finally, although it’s not a requirement, you should consider adding validation to ensure that user input provided is in the proper expected format.
+#Finally, although it’s not a requirement, you should consider adding validation to ensure that user input provided is in the proper expected format.
