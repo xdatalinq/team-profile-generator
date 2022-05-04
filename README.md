@@ -32,17 +32,17 @@ THEN I exit the application, and the HTML is generated<br>
 #The first class is an Employee parent class with the following properties and methods:
 <br>
     name
-<br>
+
     id
-<br>
+
     email
-<br>
+
     getName()
-<br>
+
     getId()
-<br>
+
     getEmail()
-<br>
+
     getRole() // Returns 'Employee'
 <br>
 #The other three classes will extend Employee.
@@ -50,23 +50,25 @@ THEN I exit the application, and the HTML is generated<br>
 #In addition to Employee's properties and methods, Manager will also have:
 <br>
     officeNumber
-<br>
+
     getRole() // Overridden to return 'Manager'
 <br>
 #In addition to Employee's properties and methods, Engineer will also have:
 <br>
     github // GitHub username
-<br>
+
     getGithub()
-<br>
+
     getRole() // Overridden to return 'Engineer'
 <br>
 #In addition to Employee's properties and methods, Intern will also have:
 <br>
     school
-<br>
+
     getSchool()
-<br>
+
     getRole() // Overridden to return 'Intern'
 <br>
 #Finally, although it’s not a requirement, you should consider adding validation to ensure that user input provided is in the proper expected format.
+
+![image](https://user-images.githubusercontent.com/89672040/166719741-663fd897-56b7-4923-9494-0fd29931acda.png)
