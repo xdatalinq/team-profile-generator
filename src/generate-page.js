@@ -9,7 +9,7 @@ const generateEmployees = employeesArr => {
 };
 
 //generate page
-module.exports = templateData => {
+module.exports = generatePage => {
     const { employees, ...header } = templateData;
 
     return `
@@ -40,4 +40,4 @@ module.exports = templateData => {
       </body>
       </html>
     `;
-}
+};
