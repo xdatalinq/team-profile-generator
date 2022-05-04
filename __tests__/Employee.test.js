@@ -10,25 +10,25 @@ test('creates an employee object', () => {
 });
 
 test('getName() function', () => {
-    const employee = new Employee('Tommy', '9', 'tommy@test.com');
+    const employee = new Employee('Tommy', 9, 'tommy@test.com');
 
     expect(employee.getName()).toBe('Tommy');
 });
 
 test('getID() function', () => {
-    const employee = new Employee('Tommy', '9', 'tommy@test.com');
+    const employee = new Employee('Tommy', 9, 'tommy@test.com');
 
-    expect(employee.getID()).toBe('9');
+    expect(employee.getID()).toEqual(expect.any(Number));
 });
 
 test('getEmail() function', () => {
-    const employee = new Employee('Tommy', '9', 'tommy@test.com');
+    const employee = new Employee('Tommy', 9, 'tommy@test.com');
 
     expect(employee.getEmail()).toBe('tommy@test.com');
 });
 
 test('getRole() function', () => {
-    const employee = new Employee('Tommy', '9', 'tommy@test.com');
+    const employee = new Employee('Tommy', 9, 'tommy@test.com');
 
     expect(employee.getRole()).toBe('Employee');
 });
