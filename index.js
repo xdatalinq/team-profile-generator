@@ -1,112 +1,95 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
 const generatePage = require('./src/generate-page.js');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
-const promptUser = () => {
-    return inquirer.prompt([
-            {
-              type: 'input',
-              name: 'manager-name',
-              message: "Please enter the team manager's name",
-              validate: nameInput => {
-                if (nameInput) {
-                  return true;
-                } else {
-                  console.log('Please enter a manager name!');
-                  return false;
-                }
-              }
-            },
-            {
-              type: 'input',
-              name: 'manager-ID',
-              message: "Please enter the team manager's employee ID",
-              validate: idInput => {
-                if (idInput) {
-                  return true;
-                } else {
-                  console.log('Please enter the employee ID!');
-                  return false;
-                }
-              }
-            },
-            {
-              type: 'input',
-              name: 'email-manager',
-              message: "Please enter the team manager's email",
-              validate: emailInput => {
-                if (emailInput) {
-                  return true;
-                } else {
-                  console.log('Please enter the manager email address!');
-                  return false;
-                }
-              }
-            },
-            {
-              type: 'input',
-              name: 'office-number',
-              message: "Please enter the team manager's office number",
-              validate: officeInput => {
-                if (officeInput) {
-                  return true;
-                } else {
-                  console.log('Please enter the office number!');
-                    return false;
-                }
-              }
-            },
-            {
-              type: 'list',
-              name: 'next-step',
-              message: "What would you like to do next?",
-              choices: ['Add engineer', 'Add intern', 'Finish building my team']
-            }
-        ])
-    .then(pageData => {
-    return pageData;
-    })
-};
+const teamArrays = {
+  managerArr: [],
+  engineerArr: [],
+  internArr: []
+}
 
-// Create a function to write HTML file
-const writeFile = fileContent => {
-    return new Promise((resolve, reject) => {
-      fs.writeFile('./dist/index.html', fileContent, err => {
-        // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
-        if (err) {
-          reject(err);
-          // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
-          return;
+const promptManager = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: "Please enter the team manager's name",
+      validate: nameInput => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log('Please enter a manager name!');
+          return false;
         }
-  
-        // if everything went well, resolve the Promise and send the successful data to the `.then()` method
-        resolve({
-          ok: true,
-          message: 'File created!'
-        });
-      });
-    });
+      }
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: "Please enter the team manager's employee ID",
+      validate: idInput => {
+        if (idInput) {
+          return true;
+        } else {
+          console.log('Please enter the employee ID!');
+          return false;
+        }
+      }
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: "Please enter the team manager's email",
+      validate: emailInput => {
+        if (emailInput) {
+          return true;
+        } else {
+          console.log('Please enter the manager email address!');
+          return false;
+        }
+      }
+    },
+    {
+      type: 'input',
+      name: 'office',
+      message: "Please enter the team manager's office number",
+      validate: officeInput => {
+        if (officeInput) {
+          return true;
+        } else {
+          console.log('Please enter the office number!');
+            return false;
+        }
+      }
+    },
+  ])
+  .then(managerData => {
+
+    return managerData;
+  })
 };
 
 // Create a function to initialize app
 const init = () => {
     console.log(`
-        
-    Welcome to Team Profile Generator: 
-    
+    =================================    
+    Welcome to Team Profile Generator 
+    =================================
     
     `);
-    promptUser()
-    .then(pageData => {
-        return generatePage(pageData);
+    promptManager()
+    .then( // next step here
     })
-    .then(pageData => {
-        return writeFile(pageData);
+    .then(htmlData => {
+        return writeFile(htmlData);
     })
     .then(writeFileResponse => {
         console.log(writeFileResponse);
         console.log(``);
     })
+    .then(copyFile)
     .catch(err => {
         console.log(err);
     });
