@@ -1,11 +1,6 @@
 // generate employees
 const generateEmployees = employeesArr => {
-  if (!employeeArr) {
-      return '';
-  }   
-  return `
-      html here probably divs
-  `;   
+   
 }
 
 //generate page
