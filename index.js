@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
 const generatePage = require("./src/generate-page.js");
+const writeFile = require("./utils/writecopy.js");
+const copyFile = require("./utils/writecopy.js");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -210,6 +212,25 @@ function promptIntern() {
     });
 }
 
+function promptFinish() {
+  console.log(team);
+  const html = generatePage(team);
+  
+  writeFile(html).then(result=>{
+      console.log(result);
+  })
+  .catch(err=>{
+      console.log(err);
+  });
+
+  copyFile().then(result=>{
+      console.log(result);
+  })
+  .catch(err=>{
+      console.log(err);
+  });
+}
+
 function menu() {
   inquirer
     .prompt({
@@ -221,10 +242,20 @@ function menu() {
     .then((userRes) => {
       switch (userRes.menu) {
         case "add an Engineer":
+          console.log('Add an engineer selected!');
+          promptEngineer();
           break;
         case "add an Intern":
+          console.log('Add an intern selected!');
+          promptIntern();
           break;
-        default: "finish building team"  
+        case "finish building team":
+          console.log('Generating team page now!');
+          promptFinish();
+          break;  
+        default:
+          console.log('Default triggered, calling menu()!');
+          menu();  
           break;
       }
     });
