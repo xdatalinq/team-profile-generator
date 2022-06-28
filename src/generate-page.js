@@ -1,37 +1,98 @@
-// generate employees
+// map employees from array and generetate html
 const generateEmployees = employeesArr => {
-   
-}
+  const { name, id, email, role, officeNumber } = employeeArr.manager;
 
-//generate page
-module.exports = generatePage => {
-  const { employees, ...header } = generatePage;
   return `
   <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>My Team</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-    </head>
-  
-    <body>
-      <header>
-        <div class="container flex-row justify-space-between align-center py-3">
-          <h1 class="page-title text-secondary bg-dark py-2 px-3">${header.name}</h1>
-        </div>
-      </header>
-      <main class="container my-5">
-        ${generateEmployees(employees)}
-      </main>
-      <footer class="container text-center py-3">
-        <h3></h3>
-      </footer>
-    </body>
-    </html>
-  `;
-}
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="../dist/styles.css" />
+     <title>Team Profile</title>
+   </head>
+   <body>
+     <header>
+       <h1>Team Members</h1>
+     </header>
+     <main>
+       <div id="team">
+         <div>
+           <div>
+             <div>
+               <h3>${name}</h3>
+               <div>
+                 <h4>${role}</h4>
+               </div>
+             </div>
+           </div>
+           <div>
+             <div>
+               <p>ID: ${id}</p>
+               <hr />
+               <p><a href="mailto:${email}">${email}</a></p>
+               <hr />
+               <p>Office Number: ${officeNumber}</p>
+             </div>
+           </div>
+         </div>
+         
+         ${employeesArr.engineer
+           .map((engineer) => {
+             return `<div id="employee-card">
+           <div>
+             <div>
+               <h3>${engineer.name}</h3>
+               <div>
+                 <h4>${engineer.role}</h4>
+               </div>
+             </div>
+           </div>
+           <div>
+             <div>
+               <p>ID: ${engineer.id}</p>
+               <hr />
+               <p><a href="mailto:${engineer.email}">${engineer.email}</a></p>
+               <hr />
+               <p>
+                 <a href="https://github.com/${engineer.github}" target="_blank" rel="noopener noreferrer">Github</a>
+               </p>
+             </div>
+           </div>
+         </div>`;
+           })
+           .join(' ')} 
+         ${employeeArr.intern
+           .map((intern) => {
+             return `<div>
+           <div>
+             <div>
+               <h3>${intern.name}</h3>
+               <div>
+                 <h4>${intern.role}</h4>
+               </div>
+             </div>
+           </div>
+           <div>
+             <div>
+               <p>ID: ${intern.id}</p>
+               <hr />
+               <p id="body-email"><a href="mailto:${intern.email}">${intern.email}</a></p>
+               <hr />
+               <p>School: ${intern.school}</p>
+             </div>
+           </div>
+         </div>`;
+           })
+           .join(' ')} 
+       </div>
+     </main>
+   </body>
+ </html>
+   `;
+};
+
+module.exports = generatePage; 
+
+ 
