@@ -1,6 +1,7 @@
 // map employees from array and generetate html
-const generateEmployees = employeesArr => {
-  const { name, id, email, role, officeNumber } = employeeArr.manager;
+
+module.exports = generatePage = employeesArr => {
+  const { name, id, email, role, officeNumber } = employeesArr.manager;
 
   return `
   <!DOCTYPE html>
@@ -93,6 +94,4 @@ const generateEmployees = employeesArr => {
    `;
 };
 
-module.exports = generatePage; 
 
- 
