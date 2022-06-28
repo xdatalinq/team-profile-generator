@@ -1,7 +1,14 @@
 // map employees from array and generetate html
 
 module.exports = generatePage = employeesArr => {
-  const { name, id, email, role, officeNumber } = employeesArr.manager;
+  //[manager,enginner, intern]
+
+  //function that goes over the array and gives you the manager
+  const manager=employeesArr.filter(employee=>employee.getRole()=='Manager')
+  const engineer=employeesArr.filter(employee=>employee.getRole()=='Engineer')
+  const intern=employeesArr.filter(employee=>employee.getRole()=='Intern')
+
+  const { name, id, email, role, officeNumber } = manager[0];
 
   return `
   <!DOCTYPE html>
@@ -24,7 +31,7 @@ module.exports = generatePage = employeesArr => {
              <div>
                <h3>${name}</h3>
                <div>
-                 <h4>${role}</h4>
+                 <h4>${manager[0].getRole()}</h4>
                </div>
              </div>
            </div>
@@ -39,14 +46,14 @@ module.exports = generatePage = employeesArr => {
            </div>
          </div>
          
-         ${employeesArr.engineer
+         ${engineer
            .map((engineer) => {
              return `<div id="employee-card">
            <div>
              <div>
                <h3>${engineer.name}</h3>
                <div>
-                 <h4>${engineer.role}</h4>
+                 <h4>${engineer.getRole()}</h4>
                </div>
              </div>
            </div>
@@ -64,7 +71,7 @@ module.exports = generatePage = employeesArr => {
          </div>`;
            })
            .join(' ')} 
-         ${employeeArr.intern
+         ${intern
            .map((intern) => {
              return `<div>
            <div>
