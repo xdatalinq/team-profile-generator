@@ -1,9 +1,7 @@
 // map employees from array and generetate html
 
 module.exports = generatePage = employeesArr => {
-  //[manager,enginner, intern]
 
-  //function that goes over the array and gives you the manager
   const manager=employeesArr.filter(employee=>employee.getRole()=='Manager')
   const engineer=employeesArr.filter(employee=>employee.getRole()=='Engineer')
   const intern=employeesArr.filter(employee=>employee.getRole()=='Intern')
