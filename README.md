@@ -1,6 +1,9 @@
 # team-profile-generator
 Team Profile Generator
 
+Video walkthrough: https://drive.google.com/file/d/1XLLY2yVEy-phuny7eQmnhFWXKUtADnXA/view
+Repo: https://github.com/xdatalinq/team-profile-generator
+
 #User Story
 
 AS A manager
